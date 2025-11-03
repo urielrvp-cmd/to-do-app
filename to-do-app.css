@@ -35,6 +35,27 @@ body {
   animation-iteration-count: infinite;
 }
 
+.cardRgb {
+  position: relative; 
+  border-radius: 15px; 
+  z-index: 0; 
+  overflow: visible;
+}
+
+.cardRgb::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -9px;
+  bottom: -5px;
+  border-radius: 18px; 
+  background: linear-gradient(270deg, red, rgb(255, 165, 0), rgb(253, 253, 4), rgb(10, 213, 10), rgb(34, 249, 249), rgb(3, 3, 227), rgb(251, 2, 251));
+  background-size: 800% 800%;
+  z-index: -1;
+  animation: rgbBorder 8s linear infinite;
+}
+
 .container {
   background-color: #ffffff;
   width: 90%;
@@ -250,4 +271,10 @@ body {
     transform: translateY(110vh) translateX(0) rotate(360deg);
     opacity: 0.8;
   }
+}
+
+@keyframes rgbBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

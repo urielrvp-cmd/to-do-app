@@ -120,7 +120,7 @@ function mostrarTareas(filtro = "") {
     li.style.backgroundColor = tarea.color;
     const span = document.createElement("span");
     if (tarea.completada) {
-      span.style.textDecoration = "line-through"; //crear span texto 
+      span.style.textDecoration = "line-through"; 
       span.style.color = "gray";
     }
 
@@ -191,14 +191,13 @@ btnModo.addEventListener("click", () => {
   actualizarColoresHojas(nuevoFondo);
 });
 
+// colores hojas
 function actualizarColoresHojas(fondo) {
   let colores;
   if (fondo === fondoClaro) {
-    // ✅ tonos verdes/naranja
-    colores = ["#5fa81c", "#f39c12", "#7ed957", "#ffb84d"];
+    colores = ["#5fa81c", "#f39c12", "#4ef507ff", "#ddff00ff"];
   } else {
-    // ✅ gris normales
-    colores = ["#2e2e2e", "#032e16ff", "#075e01ff", "#4a4a4a"];
+    colores = ["#3a3737ff", "#032e16ff", "#075e01ff", "#4e09b7ff"];
   }
   
   document.querySelectorAll(".leave").forEach((leave) => {
