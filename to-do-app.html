@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to-do-app</title>
+    <link rel="stylesheet" href="to-do-app.css" />
+  </head>
+  <body>
+    <main>
+      <div class="leaveAnimated"></div>
+      <div class="container">
+        <h1 class="mainTitle">Guarda tus Tareas</h1>
+        <form class="boxTask">
+          <label>
+            <input
+              class="inputForms"
+              type="text"
+              id="nuevaTarea"
+              placeholder="Nueva Tarea"
+              maxlength="50"
+            />
+          </label>
+          <button class="addBtn" id="agregarBtn">Agregar</button>
+        </form>
+
+        <h3>Listas de Tareas</h3>
+        <div class="boxSearch">
+          <label>
+            <input
+              class="inputForms"
+              type="text"
+              id="buscarTarea"
+              placeholder="Buscar tarea"
+              maxlength="50"
+            />
+            <button class="btnSearch" id="buscarBtn">Buscar</button>
+          </label>
+        </div>
+
+        <div>
+          <ul id="listaDeTareas"></ul>
+        </div>
+        <div>
+          <p id="mensajeVacio">No tienes tareas pendientes.</p>
+        </div>
+      </div>
+    </main>
+    <script src="to-do-app.js"></script>
+  </body>
+</html>
