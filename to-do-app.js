@@ -6,10 +6,13 @@ const btnBuscar = document.getElementById("buscarBtn");
 const mensajeVacio = document.getElementById("mensajeVacio");
 const animacion = document.querySelector('.leaveAnimated');
 const boxSearch = document.querySelector(".boxSearch");
+const btnModo = document.getElementById("btnChangeMode");
 
-
+const fondoOscuro = "https://i.pinimg.com/736x/85/a8/83/85a8834faadbb29faa362213a3e44d1f.jpg";  
+const fondoClaro  = "https://previews.123rf.com/images/thvideo/thvideo2303/thvideo230307133/200161183-background-of-a-sunny-day-in-a-cartoon-woodland.jpg";
 const cantidadHojas = 25; 
 let tareas = []; 
+
 
 //localstorage
 function guardarEnLocalStorage() {
@@ -21,9 +24,14 @@ function cargarDesdeLocalStorage() {
   if (tareasGuardadas) {
     tareas = tareasGuardadas;
   }
-  mostrarTareas(); // mostrar tareas 
+  const fondoGuardado = localStorage.getItem("fondoBody");
+  document.body.style.backgroundImage = `url(${fondoGuardado || fondoOscuro})`;
+  
+  actualizarColoresHojas(fondoGuardado || fondoOscuro);
+  mostrarTareas();
 }
 
+//agregar tarea
 function agregarTarea(event) {
   event.preventDefault();
   const texto = inputTarea.value.trim(); // eliminar espacios en blanco
@@ -55,6 +63,7 @@ function eliminarTarea(id) {
   mostrarTareas();
 }
 
+// eliminar todas las tareas
 function eliminarTodasTareas() {
   if (tareas.length === 0) return;
   const confirmacion = confirm("¿Seguro que quieres eliminar todas las tareas?");
@@ -86,7 +95,7 @@ function tareaCompletada(id) {
   mostrarTareas();
 }
 
-//editar colores
+//cambiar color
 function cambiarColor (id, nuevocolor) {
   const tarea = tareas.find(t => t.id === id);
   tarea.color = nuevocolor;
@@ -142,6 +151,7 @@ function mostrarTareas(filtro = "") {
       cambiarColor(tarea.id, inputColor.value);
     });
 
+    // btn completado
     const btnCompletado = document.createElement("button");  // boton tarea completa
     btnCompletado.textContent = "\u2714";
     btnCompletado.style.marginLeft = "10px";
@@ -149,6 +159,7 @@ function mostrarTareas(filtro = "") {
       tareaCompletada(tarea.id);
     });
 
+    // btn eliminar
     const btnEliminar = document.createElement("button"); // boton para eliminar tarea
     btnEliminar.textContent = "\u274C";
     btnEliminar.style.marginLeft = "5px";
@@ -170,7 +181,33 @@ function buscarTareas() {
   mostrarTareas(textoBuscado);
 }
 
+// cambiar fondo
+btnModo.addEventListener("click", () => {
+  const fondoActual = localStorage.getItem("fondoBody");
+  let nuevoFondo =
+    fondoActual === fondoClaro ? fondoOscuro : fondoClaro;
+  document.body.style.backgroundImage = `url(${nuevoFondo})`;
+  localStorage.setItem("fondoBody", nuevoFondo);
 
+  actualizarColoresHojas(nuevoFondo);
+});
+
+function actualizarColoresHojas(fondo) {
+  let colores;
+  if (fondo === fondoClaro) {
+    // ✅ tonos verdes/naranja
+    colores = ["#5fa81c", "#f39c12", "#7ed957", "#ffb84d"];
+  } else {
+    // ✅ gris normales
+    colores = ["#2e2e2e", "#032e16ff", "#075e01ff", "#4a4a4a"];
+  }
+  
+  document.querySelectorAll(".leave").forEach((leave) => {
+    leave.style.background = colores[Math.floor(Math.random() * colores.length)];
+  });
+}
+
+//hojas animadas
 for (let i = 0; i < cantidadHojas; i++) {
   const leave = document.createElement("div");
   leave.classList.add("leave");
