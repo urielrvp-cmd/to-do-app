@@ -3,7 +3,6 @@ body {
   font-family: "Poppins", "Segoe UI", sans-serif;
   display: flex;
   justify-content: center;
-  align-items: start;
   padding-top: 40px;
   min-height: 100vh;
   margin: 0;
@@ -31,7 +30,6 @@ body {
   background: #2e2e2e; 
   border-radius: 50% 25%; 
   opacity: 0.8;
-  transform: rotate(0deg);
   animation-name: down;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -72,7 +70,6 @@ body {
   margin-bottom: 15px;
   display: flex;
   gap: 10px;
-  border-radius: 5px;
 }
 
 .inputForms {

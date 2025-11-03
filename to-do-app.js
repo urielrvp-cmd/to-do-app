@@ -50,7 +50,7 @@ function agregarTarea(event) {
   tareas.push(nuevaTarea);
   guardarEnLocalStorage();
   mostrarTareas();
-  formulario.reset() = ""; //formulario.reset()
+  formulario.reset(); //formulario.reset()
 }
 
 // eliminar una tarea
@@ -78,7 +78,6 @@ const btnEliminarTodas = document.createElement("button");
 btnEliminarTodas.textContent = "Eliminar todas";
 btnEliminarTodas.classList.add("btnDeleteAllTask");
 btnEliminarTodas.addEventListener("click", eliminarTodasTareas);
-
 boxSearch.appendChild(btnEliminarTodas);
 
 
